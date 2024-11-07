@@ -16,7 +16,7 @@ class IngresoView {
 
     function tablaRegistros() {
         $registros = $this->registroController->allRegistros();
-        // Código para generar la tabla HTML con los registros
+    
         return "<table> <!-- Generar aquí la tabla HTML --> </table>";
     }
 }
