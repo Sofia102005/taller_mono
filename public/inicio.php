@@ -1,9 +1,9 @@
 <?php
-require '../Models/db/salasdb.php';
-require '../Models/queries/RegistroQuery.php';
-require '../Models/entity/Registro.php';
-require '../Controllers/RegistroController.php';
-require '../Views/IngresoView.php';
+require '../models/db/salasdb.php';
+require '../models/queries/RegistroQuery.php';
+require '../models/entity/Registro.php';
+require '../controllers/RegistroController.php';
+require '../views/IngresoView.php';
 
 use App\views\IngresoView;
 

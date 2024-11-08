@@ -3,7 +3,7 @@ namespace App\controllers;
 
 use App\models\entity\Registro;
 use App\models\queries\RegistroQuery;
-use App\models\db\ingreso_salas_db;
+use App\models\db\salasdb;
 
 class RegistroController {
     private $db;
