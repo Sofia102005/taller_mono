@@ -1,5 +1,5 @@
 <?php
-require '../Models/db/salas_db.php';
+require '../Models/db/salasdb.php';
 require '../Models/queries/RegistroQuery.php';
 require '../Models/entity/Registro.php';
 require '../Controllers/RegistroController.php';
@@ -15,7 +15,7 @@ $ingresoView = new IngresoView();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Ingresos a Salas de Computo</title>
+    <title>Registro de Ingresos a Salas</title>
     <link rel="stylesheet" href="css/registro.css"> 
 </head>
 <body>

@@ -10,11 +10,11 @@ class IngresoView {
         $this->registroController = new RegistroController();
     }
 
-    function formularioRegistro() {
+    function formularioBusquedaIngresos() {
         return "<form> <!-- Código HTML para el formulario de registro de ingreso --> </form>";
     }
 
-    function tablaRegistros() {
+    function tablaIngresos() {
         $registros = $this->registroController->allRegistros();
     
         return "<table> <!-- Generar aquí la tabla HTML --> </table>";

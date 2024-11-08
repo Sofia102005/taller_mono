@@ -3,12 +3,12 @@ namespace App\models\db;
 
 use mysqli;
 
-class ingreso_salas_db
+class salasdb
 {
     private $host = 'localhost';
     private $user = 'root';
     private $pwd = '';
-    private $name = 'ingreso_salas_db';
+    private $name = 'ingresos_salas_db';
     private $conex;
 
     public function __construct() {

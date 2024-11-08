@@ -9,7 +9,7 @@ class RegistroController {
     private $db;
 
     public function __construct() {
-        $this->db = new ingreso_salas_db();
+        $this->db = new salasdb();
     }
 
     function allRegistros() {
