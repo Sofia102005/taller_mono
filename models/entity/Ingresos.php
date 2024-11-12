@@ -38,6 +38,22 @@ class Ingreso
         }
     }
 
+    public function generateRow($ingreso)
+{
+    $html = '<tr>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('nombreEstudiante')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('codigoEstudiante')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('fechaIngreso')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('horaIngreso')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('horaSalida')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('idPrograma')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('idResponsable')) . '</td>';
+    $html .= '<td>' . htmlspecialchars($ingreso->get('idSala')) . '</td>';
+    $html .= '</tr>';
+
+    return $html;
+}
+
 
     public function getNombre()
     {

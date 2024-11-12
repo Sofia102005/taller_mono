@@ -5,36 +5,12 @@ require '../models/queries/ingresosQueries.php';
 require '../controllers/controladoresIngreso.php';
 require '../views/anadirView.php';
 
-use App\Controllers\ControladoresIngreso;
 use App\views\anadirViews;
 
 $anadirView = new anadirViews();
+$title = empty($_GET['cod']) ? 'Añadir ingreso' : 'Consultar ingreso';
 $form = $anadirView->getFormIngresos();
 
-$controladorIngreso = new ControladoresIngreso();
-$message = ""; 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
-    $datos = [
-        'nombreEstudiante' => $_POST['nombreEstudiante'],
-        'codigoEstudiante' => $_POST['codigoEstudiante'],
-        'fechaIngreso' => $_POST['fechaIngreso'],
-        'horaIngreso' => $_POST['horaIngreso'],
-        'horaSalida' => $_POST['horaSalida'],
-        'idPrograma' => $_POST['idPrograma'],
-        'idResponsable' => $_POST['idResponsable'],
-        'idSala' => $_POST['idSala'],
-    ];
-
-    $resultado = $controladorIngreso->saveIngreso($datos);
-
-    if ($resultado) {
-        $message = "<p>Ingreso guardado exitosamente.</p>";
-    } else {
-        $message = "<p>Error al guardar el ingreso.</p>";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -42,15 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
-    <title>Añadir ingreso</title> 
+    <link rel="stylesheet" href="css/anadir.css">
+    <title><?php echo $title; ?></title>
 </head>
 <body>
     <div class="container">
-        <h1>Añadir ingreso</h1> 
+        <h1><?php echo $title; ?></h1>
         <?php echo $form; ?>
-        
-        <?php if (!empty($message)) echo $message; ?>
 
         <h2>Lista de Ingresos</h2>
         <?php 

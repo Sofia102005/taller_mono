@@ -2,16 +2,17 @@
 require '../models/db/salasdb.php';
 require '../models/entity/ingresos.php';
 require '../models/queries/ingresosQueries.php';
-require '../controllers/controladoresIngreso.php';
+require '../Controllers/controladoresIngreso.php';
 require '../views/anadirView.php';
 
 use App\views\anadirViews;
-
-$AnadirViews = new anadirViews();
-$title = empty($_GET['cod']) ? 'Añadir ingreso' : '';
-$form = $AnadirViews->getFormIngresos();
+use App\Controllers\ControladoresIngreso;
 
 $anadirView = new anadirViews();
+$title = empty($_GET['cod']) ? 'Consultar ingreso' : 'Consultar ingreso'; // Título de la página
+
+$controladorIngreso = new ControladoresIngreso();
+$registros = [];
 ?>
 
 <!DOCTYPE html>
@@ -19,18 +20,17 @@ $anadirView = new anadirViews();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
-    <title>Consultar </title>
+    <link rel="stylesheet" href="css/buscar.css">
+    <title><?php echo $title; ?></title>
 </head>
 <body>
     <div class="container">
-        <h1>Consultar</h1>
-        <?php echo $anadirView->getFormIngresos(); ?>
+        <h1><?php echo $title; ?></h1>
 
-        <h2>Lista de Ingresos</h2>
+        <p>No hay formulario para buscar ingresos.</p> 
+
         <?php 
-        $fecha = '1';
-        echo $anadirView->getTable($fecha); ?>
+        ?>
     </div>
     <script src="js/index.js"></script>
 </body>

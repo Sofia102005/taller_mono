@@ -65,20 +65,16 @@ class anadirViews
         $form .= '</form>';
         return $form;
     }
-
-    function getTable($fecha)
+    public function getTable($registros)
     {
+        if (!is_array($registros)) {
+            return '<tr><td colspan="10">Error: Se esperaba un array de registros.</td></tr>';
+        }
+    
         $rows = '';
-        $ingresos = $this->controller->getAllIngresos();
-
-        if ($fecha != '1') {
-            foreach ($ingresos as $ingreso) {
-                if ($fecha == $ingreso->get('fechaIngreso')) {
-                    $rows .= $this->generateRow($ingreso);
-                }
-            }
-        } else if (count($ingresos) > 0) {
-            foreach ($ingresos as $ingreso) {
+    
+        if (count($registros) > 0) {
+            foreach ($registros as $ingreso) {
                 $rows .= $this->generateRow($ingreso);
             }
         } else {
@@ -86,7 +82,7 @@ class anadirViews
             $rows .= '   <td colspan="10">No hay datos registrados</td>';
             $rows .= '</tr>';
         }
-
+    
         return $this->generateTable($rows);
     }
 

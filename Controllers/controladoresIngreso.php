@@ -17,7 +17,7 @@ class ControladoresIngreso
         $ingreso = new Ingreso();
 
         try {
-            // Validación de datos
+            
             $this->validateIngresoData($datos);
 
             // Asignación de datos al objeto Ingreso

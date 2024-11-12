@@ -48,4 +48,23 @@ class ingresosQuerys
                 
         return $sql;
     }
+
+    public function buscador_fechas($fromDate, $toDate)
+{
+    try {
+        
+        if (empty($fromDate) || empty($toDate)) {
+            throw new \Exception("Las fechas no pueden estar vacías.");
+        }
+
+        if ($fromDate > $toDate) {
+            throw new \Exception("La fecha 'Desde' debe ser anterior o igual a la fecha 'Hasta'.");
+        }
+
+        return IngresosQuerys::Between($fromDate, $toDate);
+    } catch (\Exception $e) {
+        error_log("Error al buscar ingresos entre fechas: " . $e->getMessage());
+        return [];
+    }
+}
 }
