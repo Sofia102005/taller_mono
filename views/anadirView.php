@@ -105,7 +105,7 @@ class anadirViews
         } else if (count($ingresos) > 0) {
             foreach ($ingresos as $ingreso) {
                 $rows .= '<tr>';
-                $rows .= '   <td>' . $ingreso->get('nombre') . '</td>';
+                $rows .= '   <td>' . $ingreso->get('nombreEstudiante') . '</td>';
                 $rows .= '   <td>' . $ingreso->get('codigoEstudiante') . '</td>';
                 $rows .= '   <td>' . $ingreso->get('fechaIngreso') . '</td>';
                 $rows .= '   <td>' . $ingreso->get('horaIngreso') . '</td>';
