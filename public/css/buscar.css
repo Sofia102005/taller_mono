@@ -42,7 +42,7 @@ p {
 
 /* Estilos para los botones */
 button {
-    background-color: #28a745; /* Color verde */
+    background-color: #5a98da; /* Color verde */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -52,7 +52,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838; /* Color verde más oscuro al pasar el mouse */
+    background-color: #5a98da; /* Color verde más oscuro al pasar el mouse */
 }
 
 /* Estilos para los inputs */

@@ -20,7 +20,6 @@ class ControladoresIngreso
             
             $this->validateIngresoData($datos);
 
-            // Asignación de datos al objeto Ingreso
             $ingreso->set('nombreEstudiante', $datos['nombreEstudiante']);
             $ingreso->set('codigoEstudiante', $datos['codigoEstudiante']);
             $ingreso->set('fechaIngreso', $datos['fechaIngreso']);
@@ -30,7 +29,7 @@ class ControladoresIngreso
             $ingreso->set('idResponsable', $datos['idResponsable']);
             $ingreso->set('idSala', $datos['idSala']);
 
-            // Guardar el ingreso en la base de datos
+         
             return $ingreso->save();
 
         } catch (\Exception $e) {
@@ -41,7 +40,7 @@ class ControladoresIngreso
 
     private function validateIngresoData($datos)
     {
-        // Validación de cada campo requerido
+     
         if (empty($datos['nombreEstudiante'])) {
             throw new \Exception("El nombre del estudiante no está definido.");
         }

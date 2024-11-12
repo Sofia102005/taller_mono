@@ -21,7 +21,7 @@ class anadirViews
         if (count($ingresos) > 0) {
             foreach ($ingresos as $ingreso) {
                 $rows .= '<tr>';
-                $rows .= '   <td>' . htmlspecialchars($ingreso->get('nombre')) . '</td>';
+                $rows .= '   <td>' . htmlspecialchars($ingreso->get('nombreEstudiante')) . '</td>';
                 $rows .= '   <td>' . htmlspecialchars($ingreso->get('codigoEstudiante')) . '</td>';
                 $rows .= '   <td>' . htmlspecialchars($ingreso->get('fechaIngreso')) . '</td>';
                 $rows .= '   <td>' . htmlspecialchars($ingreso->get('horaIngreso')) . '</td>';
@@ -124,7 +124,7 @@ class anadirViews
         $form .= '<div>';
         $form .= '<div>';
         $form .= '    <label for="responsable">Nombre del Responsable:</label>';
-        $form .= '    <select id="responsable" name="idResponsable" required>'; // Cambiado a name="idResponsable"
+        $form .= '    <select id="responsable" name="idResponsable" required>'; 
         $form .= '        <option value="">Seleccione un responsable</option>';
         $form .= '        <option value="Juan Perez">Juan Perez</option>';
         $form .= '        <option value="Ana Lopez">Ana Lopez</option>';
@@ -133,7 +133,7 @@ class anadirViews
 
         $form .= '<div>';
         $form .= '    <label for="idSala">Salas:</label>';
-        $form .= '    <select id="idSala" name="idSala" required>'; // Cambiado a name="idSala"
+        $form .= '    <select id="idSala" name="idSala" required>';  
         $form .= '        <option value="">Seleccione una Sala</option>';
         $form .= '        <option value="Sala 201G">Sala 201G</option>';
         $form .= '        <option value="Sala 202H">Sala 202H</option>';

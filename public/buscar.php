@@ -9,7 +9,7 @@ use App\views\anadirViews;
 use App\Controllers\ControladoresIngreso;
 
 $anadirView = new anadirViews();
-$title = empty($_GET['cod']) ? 'Consultar ingreso' : 'Consultar ingreso'; // Título de la página
+$title = empty($_GET['cod']) ? 'Consultar ingreso' : 'Consultar ingreso'; 
 
 $controladorIngreso = new ControladoresIngreso();
 $registros = [];

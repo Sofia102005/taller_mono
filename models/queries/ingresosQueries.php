@@ -14,9 +14,9 @@ class ingresosQuerys
         return "SELECT * FROM salas";
     }
     
-    static function selectProgramas() // Cambiado a plural para consistencia
+    static function selectProgramas() 
     {
-        return "SELECT * FROM programas"; // Consulta para obtener todos los programas
+        return "SELECT * FROM programas"; 
     }
     
     static function selectresponsables()
