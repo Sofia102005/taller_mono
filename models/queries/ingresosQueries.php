@@ -6,28 +6,31 @@ class ingresosQuerys
 {
     static function selectAll()
     {
-        return "select * from ingresos";
+        return "SELECT * FROM ingresos";
     }
+    
     static function selectsala()
     {
-        return "select * from salas";
+        return "SELECT * FROM salas";
     }
-    static function selectprograma()
+    
+    static function selectProgramas() // Cambiado a plural para consistencia
     {
-        return "select * from programas";
+        return "SELECT * FROM programas"; // Consulta para obtener todos los programas
     }
+    
     static function selectresponsables()
     {
-        return "select * from responsables";
+        return "SELECT * FROM responsables";
     }
+    
     static function Between($fromDate, $toDate)
     {
-        
-
-        return "select * from ingresos where fechaIngreso between '$fromDate' and '$toDate'";
+        return "SELECT * FROM ingresos WHERE fechaIngreso BETWEEN '$fromDate' AND '$toDate'";
     }
 
-    static function insert($ingresos){
+    static function insert($ingresos)
+    {
         $nombre = $ingresos->get('nombre');
         $codigoEstudiante = $ingresos->get('codigo');
         $fechaIngreso = $ingresos->get('fechaIngreso');
@@ -37,10 +40,12 @@ class ingresosQuerys
         $idResponsable = $ingresos->get('idResponsable');
         $idSala = $ingresos->get('idSala');
         $created_at = $ingresos->get('created_at');
-        $sql = "insert into ingresos (nombre,codigoEstudiante,fechaIngreso,horaIngreso,horaSalida,idPrograma,
-        idResponsable,idSala,created_at) values ";
-        $sql .= "('$nombre','$codigoEstudiante','$fechaIngreso','$horaIngreso','$horaSalida','$idPrograma'
-        ,'$idResponsable','$idSala','$created_at')";
+        
+        $sql = "INSERT INTO ingresos (nombre, codigoEstudiante, fechaIngreso, horaIngreso, horaSalida, idPrograma,
+                idResponsable, idSala, created_at) VALUES ";
+        $sql .= "('$nombre', '$codigoEstudiante', '$fechaIngreso', '$horaIngreso', '$horaSalida', '$idPrograma',
+                '$idResponsable', '$idSala', '$created_at')";
+                
         return $sql;
     }
 }
