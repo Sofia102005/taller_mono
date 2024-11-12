@@ -5,16 +5,36 @@ require '../models/queries/ingresosQueries.php';
 require '../controllers/controladoresIngreso.php';
 require '../views/anadirView.php';
 
-
-use app\views\anadirViews;
-
-$AnadirViews = new  anadirViews();
-$title = empty($_GET['cod'])?'Añadir ingreso':'';
-$form = $AnadirViews->getFormIngresos();
-
+use App\Controllers\ControladoresIngreso;
+use App\views\anadirViews;
 
 $anadirView = new anadirViews();
+$form = $anadirView->getFormIngresos();
 
+$controladorIngreso = new ControladoresIngreso();
+$message = ""; 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  
+    $datos = [
+        'nombreEstudiante' => $_POST['nombreEstudiante'],
+        'codigoEstudiante' => $_POST['codigoEstudiante'],
+        'fechaIngreso' => $_POST['fechaIngreso'],
+        'horaIngreso' => $_POST['horaIngreso'],
+        'horaSalida' => $_POST['horaSalida'],
+        'idPrograma' => $_POST['idPrograma'],
+        'idResponsable' => $_POST['idResponsable'],
+        'idSala' => $_POST['idSala'],
+    ];
+
+    $resultado = $controladorIngreso->saveIngreso($datos);
+
+    if ($resultado) {
+        $message = "<p>Ingreso guardado exitosamente.</p>";
+    } else {
+        $message = "<p>Error al guardar el ingreso.</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,18 +43,21 @@ $anadirView = new anadirViews();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
-    <title>Añadir Ingreso de Estudiante</title>
-   
+    <title>Añadir ingreso</title> 
 </head>
 <body>
     <div class="container">
-        <h1>Añadir Ingreso de Estudiante</h1>
-        <?php echo $anadirView->getFormIngresos(); ?>
+        <h1>Añadir ingreso</h1> 
+        <?php echo $form; ?>
+        
+        <?php if (!empty($message)) echo $message; ?>
 
         <h2>Lista de Ingresos</h2>
         <?php 
-        $fecha = '1';
-        echo $anadirView->getTable($fecha); ?>
+        $fecha = date('Y-m-d'); 
+        echo $anadirView->getTable($fecha); 
+        ?>
     </div>
     <script src="js/index.js"></script>
 </body>
+</html>

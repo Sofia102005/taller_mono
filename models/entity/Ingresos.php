@@ -19,7 +19,7 @@ class Ingreso
     public $created_at;
     public $updated_at;
 
-    // Método para establecer propiedades
+   
     public function set($prop, $value)
     {
         if (property_exists($this, $prop)) {
@@ -28,8 +28,7 @@ class Ingreso
             throw new \Exception("Property {$prop} no existe."); 
         }
     }
-    
-    // Método para obtener propiedades
+
     public function get($prop)
     {
         if (property_exists($this, $prop)) {
@@ -39,13 +38,12 @@ class Ingreso
         }
     }
 
-    // Método para obtener el nombre del estudiante
+
     public function getNombre()
     {
         return $this->nombreEstudiante;
     }
 
-    // Método para obtener todos los ingresos
     public static function all()
     {
         $sql = ingresosQuerys::selectAll();
