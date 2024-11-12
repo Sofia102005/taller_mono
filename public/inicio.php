@@ -1,13 +1,18 @@
-<?php
+<?php 
+
 require '../models/db/salasdb.php';
-require '../models/queries/RegistroQuery.php';
-require '../models/entity/Registro.php';
-require '../controllers/RegistroController.php';
-require '../views/IngresoView.php';
+require '../models/entity/ingresos.php';
+require '../models/queries/ingresosQueries.php';
+require '../controllers/controladoresIngreso.php';
+require '../views/anadirView.php';
 
-use App\views\IngresoView;
+use app\views\anadirViews;
 
-$ingresoView = new IngresoView();
+$añadirView = new anadirViews();
+
+date_default_timezone_set('America/Bogota');
+$fechaActual = date("Y-m-d");
+
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +20,29 @@ $ingresoView = new IngresoView();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Ingresos a Salas</title>
-    <link rel="stylesheet" href="css/registro.css"> 
+    <link rel="stylesheet" href="css/registro.css">
+    <title>Salas de computo</title>
 </head>
 <body>
-    <header> 
-        <h1>Registro de Ingresos</h1>
+    <header>
+        <h1>Menú Principal</h1>
+        <p>Bienvenido</p>
     </header>
-    <section>
-        <?php
-            echo $ingresoView->formularioBusquedaIngresos();  
-            echo $ingresoView->tablaIngresos();    
-        ?>           
-    </section>
+
+    <main>
+        <nav>
+            <ul>
+                <li><a href="anadir.php">Añadir ingreso</a></li>
+                <li><a href="buscar.php">Consultar ingresos</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <h2>Ingresos del Día</h2>
+            <p>Fecha actual: <?= htmlspecialchars($fechaActual) ?></p>
+            
+        </section>
+    </main>
+
 </body>
 </html>
