@@ -12,14 +12,11 @@ class ControladoresIngreso
         return Ingreso::all();
     }
     
-    public function saveIngreso($datos)
+    public function guardarIngreso($datos)
     {
-        $ingreso = new Ingreso();
-
         try {
-            
-            $this->validateIngresoData($datos);
-
+            // Crear una nueva instancia de Ingreso
+            $ingreso = new Ingreso();
             $ingreso->set('nombreEstudiante', $datos['nombreEstudiante']);
             $ingreso->set('codigoEstudiante', $datos['codigoEstudiante']);
             $ingreso->set('fechaIngreso', $datos['fechaIngreso']);
@@ -28,19 +25,18 @@ class ControladoresIngreso
             $ingreso->set('idPrograma', $datos['idPrograma']);
             $ingreso->set('idResponsable', $datos['idResponsable']);
             $ingreso->set('idSala', $datos['idSala']);
-
-         
-            return $ingreso->save();
-
+    
+            // Guardar el ingreso en la base de datos
+            return $ingreso->save(); // Asegúrate de que este método esté implementado correctamente
         } catch (\Exception $e) {
             error_log("Error al guardar el ingreso: " . $e->getMessage());
-            return false; 
+            return false;
         }
     }
-
+    
     private function validateIngresoData($datos)
     {
-     
+        // Validar que todos los campos necesarios estén presentes
         if (empty($datos['nombreEstudiante'])) {
             throw new \Exception("El nombre del estudiante no está definido.");
         }

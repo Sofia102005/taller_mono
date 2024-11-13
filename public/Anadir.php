@@ -6,11 +6,37 @@ require '../controllers/controladoresIngreso.php';
 require '../views/anadirView.php';
 
 use App\views\anadirViews;
+use App\Controllers\ControladoresIngreso;
 
 $anadirView = new anadirViews();
 $title = empty($_GET['cod']) ? 'Añadir ingreso' : 'Consultar ingreso';
 $form = $anadirView->getFormIngresos();
+$controladorIngreso = new ControladoresIngreso();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   
+    $datos = [
+        'nombreEstudiante' => htmlspecialchars($_POST['nombreEstudiante']),
+        'codigoEstudiante' => htmlspecialchars($_POST['codigoEstudiante']),
+        'idPrograma' => htmlspecialchars($_POST['idPrograma']),
+        'fechaIngreso' => htmlspecialchars($_POST['fechaIngreso']),
+        'horaIngreso' => htmlspecialchars($_POST['horaIngreso']),
+        'horaSalida' => htmlspecialchars($_POST['horaSalida']),
+        'idResponsable' => htmlspecialchars($_POST['idResponsable']),
+        'idSala' => htmlspecialchars($_POST['idSala']),
+    ];
+
+    try {
+        $resultado = $controladorIngreso->guardarIngreso($datos);
+        if ($resultado) {
+            echo '<p>Ingreso guardado exitosamente.</p>';
+        } else {
+            echo '<p>Error al guardar el ingreso.</p>';
+        }
+    } catch (\Exception $e) {
+        echo '<p>Error inesperado: ' . $e->getMessage() . '</p>';
+    }
+}
 ?>
 
 <!DOCTYPE html>

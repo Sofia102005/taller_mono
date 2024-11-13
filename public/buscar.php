@@ -13,6 +13,8 @@ $title = empty($_GET['cod']) ? 'Consultar ingreso' : 'Consultar ingreso';
 
 $controladorIngreso = new ControladoresIngreso();
 $registros = [];
+
+$formularioBusqueda = $anadirView->getBusqueda();
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +29,13 @@ $registros = [];
     <div class="container">
         <h1><?php echo $title; ?></h1>
 
-        <p>No hay formulario para buscar ingresos.</p> 
-
         <?php 
+        
+        if (!empty($formularioBusqueda)) {
+            echo $formularioBusqueda;
+        } else {
+            echo '<p>No hay formulario para buscar ingresos.</p>'; 
+        }
         ?>
     </div>
     <script src="js/index.js"></script>
