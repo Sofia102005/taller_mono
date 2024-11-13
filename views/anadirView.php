@@ -90,7 +90,7 @@ class anadirViews
     {
         $fechaActual = date('Y-m-d');
 
-        $form = '<form action="" method="post">';
+        $form = '<form action="buscar.php" method="post">';
         $form .= '<div>';
         $form .= '    <label for="nombreEstudiante">Nombre:</label>';
         $form .= '    <input type="text" id="nombreEstudiante" name="nombreEstudiante" required>';
